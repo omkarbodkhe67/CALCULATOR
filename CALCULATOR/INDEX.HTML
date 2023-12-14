@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" class="form-control mb-2" disabled>
+    <div class="row">
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('1')">1</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('2')">2</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('3')">3</button>
+        <button class="btn btn-warning col-3" onclick="appendToDisplay('+')">+</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('4')">4</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('5')">5</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('6')">6</button>
+        <button class="btn btn-warning col-3" onclick="appendToDisplay('-')">-</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('7')">7</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('8')">8</button>
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('9')">9</button>
+        <button class="btn btn-warning col-3" onclick="appendToDisplay('*')">*</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary col-3" onclick="appendToDisplay('0')">0</button>
+        <button class="btn btn-warning col-3" onclick="appendToDisplay('/')">/</button>
+        <button class="btn btn-success col-3" onclick="calculate()">=</button>
+        <button class="btn btn-danger col-3" onclick="appendToDisplay('%')">%</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-danger col-12" onclick="clearDisplay()">C</button>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
